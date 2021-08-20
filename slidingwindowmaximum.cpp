@@ -17,7 +17,7 @@ int main(){
         }
         q.push_back(i); 
     }
-    ans.push_back(ans[q.front()]);
+    ans.push_back(a[q.front()]);
     for(int i=k;i<n;i++){
         if(q.front() == i-k){
             q.pop_front();
