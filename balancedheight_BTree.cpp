@@ -48,6 +48,27 @@ bool isBalanced(Node* root){
     }
 
 }
+bool optimizedisBalanced(Node* root, int* height){
+
+    if(root == NULL){
+        return true;
+    }
+
+    int lh = 0; rh = 0;
+    if(isBalanced(root->left, &lh)==false){
+        return false;
+    }
+    if(isBalanced(root->right, &rh)==false){
+        return false;
+    }
+
+    *height = max(lh,rh) + 1;
+    if(abs(lh-rh)<=1){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 int main(){
 
@@ -63,7 +84,15 @@ int main(){
         cout<<"Balanced Tree"<<endl;
     }
     else{
-        cout<<"Not Balanced Tree"<<endl;
+        cout<<"Unbalanced Tree"<<endl;
+    }
+
+    int height = 0;
+    if(optimizedisBalanced(root,&height)==true){
+        cout<<"Balanced Tree"<<endl;
+    }
+    else{
+        cout<<"Unbalanced Tree"<<endl;
     }
     return 0;
 }
